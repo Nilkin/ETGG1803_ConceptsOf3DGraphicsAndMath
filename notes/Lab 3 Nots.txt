@@ -1,0 +1,2 @@
+Works only in 2D, you can generate a perpendicular vector like this:
+v=[-vy,vx ]

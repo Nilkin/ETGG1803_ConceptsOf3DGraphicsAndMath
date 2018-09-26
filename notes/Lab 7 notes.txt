@@ -1,0 +1,34 @@
+For Matrices, always put the Row first befor Columns.
+
+You have to use a 4x4 matrices for translation
+
+A special Square matrix is the identity matrix, made up of 0's and 1's.
+They always have their 1's going from the top left to the bottom right corner and the rest are 0's
+multiplieing by an identity matrix always returns the other matrix
+so A*I=A
+or like 7*1=7
+
+Raising something to the T flips the matrix on its side and dimension
+T=Transpose
+We will make a method for this
+
+Matrix:Matrix multiplication.
+
+You can only multiply a matrix by the first matrix column, and by the second matrix's row.
+this returns a matrix by the dimension of the first matrix row and second matrix's column.
+
+create a Matrix class
+
+Class MatrixN(object):
+    def__init__(self,row,column,init_data=None):
+        if init_data=None:
+            make every row and column full of zero's
+        else:
+
+    def__mul__(self,rhs)
+        if isinstance(rhs,VectorN)
+
+        elif isinstance(rhs,MatrixN)
+
+        else: raise Value Error
+

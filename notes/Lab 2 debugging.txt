@@ -1,0 +1,12 @@
+n= VectorN(2,1) #n=[2,1]
+nhat=n.normalized()#[0.8,0.4] #N=N/||N||
+print(nhat.magnitude()) #1.0
+L=[4.2,3.7,9.1]
+#by index
+for i in range(len(L)):
+	print(i)
+4.2	0
+3.7	1
+9.1	2
+
+m=((v1+v2+vn)**2)**.05

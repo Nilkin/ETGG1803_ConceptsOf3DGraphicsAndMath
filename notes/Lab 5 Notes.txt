@@ -1,0 +1,85 @@
+To get the Vhat ray, interest-CameraPos=Vhat.normalized
+CameraZ=coi-CamerPos #coi=camera center of interest
+CameraX=camUp.normalized.cross(CameraZ) #camUp is given to you in the code
+CameraY=CameraZ.cross(CameraX) 
+To get the the dimensions for the aspect ratio in your program, just pass it your surface width and height,
+then divide the width by the height.
+fov/2=Theta (angle you are looking at)
+viewPlaneHeight/2=hight of camera
+near is the distance
+tan=opp/adj
+
+2*near*tan(fov/2)=viewPlaneHeight
+AspectRatio=viewPlaneWidth/viewPlaneHeight
+viewPlaneWidth=AspectRatio*viewPlaneHeight
+
+ViewPlaneOrigin(VPO)
+vpo=camPos+(a+b+c)
+a is the vector position away from the center of the camera screen
+a=near*CameraZ.normalized
+b=(viewPlaneHight/2)*camY.normalized
+c=-(viewPlaneWidth/2)*camX.normalized
+
+Calculating normal/front of a triangle:
+
+Given:
+iX,iY: pygame pos [2D]
+w,h: pygame surface dimensions
+viewPlaneOrigin
+camX.normalized,camY.normalized
+
+Find: p the [3d] pos of (ix, iy) on our view plane
+d=(-c*2)/width*ix #this is the ix position of p, it is the length along the camera width from vpo
+e=(-c*2)/height*iy #this is the iY position of p, it is the length along the camera length from vpo
+#another method would be d=((ix/(width-1))*vpw)*camX.normalized
+p=vpo+d+e
+
+How to calculate A ray intersection point:
+Point=Origin+(t)Direction
+Point*N^=Distence
+(Origin+(t)Direction^)*N^=Distence
+Origin*N^+(t)N^*Direction^=Distence
+(t)N^*Direction^=Distence-Origin*N^
+(t)=(Distence-Origin*N^)/(N^*Direction)
+
+class Plane
+def__init__(self,n,d):
+	self.n=n.normalized()
+	self.d=d
+def rayIntersection(self,R)
+	Dhat=R.mDirection
+	Ori=R.mOrigin
+	if N^*Direction^==0
+ 		return None
+	if t<0:
+		return None
+	t=
+	return t
+
+for spheroids use the Quadratic Formula for it: (-b+-(b**2-(4ac))**.5)/2a
+
+Ray Sphere Intersection:
+Given:
+Origin
+Direction.normalized()
+CircleOrigin
+Radius
+
+Case I: No Hit
+Q:the distance between Origin and CircleOrigin
+Q=C-O
+para_dist=Q*Direction.normalized()
+
+cos(Theta)=adj/hyp
+cos(Theta)=para_dist/Q.magnitude()
+para_dist=Q.magnitude()*cos(Theta)
+Q=Q.magnitude()*cos(Theta)
+
+perp_dist_squared=Q**2-para_dist**2
+if perp_dist_squared>Radius**2:
+	return None
+
+CaseII:Hit
+perp_dist_squared+offset**2=Radius**2
+offset=(Radius**2-perp_dist_squared)**.5
+t=Para_dist-offset

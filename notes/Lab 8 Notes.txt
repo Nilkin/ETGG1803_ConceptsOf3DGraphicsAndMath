@@ -1,0 +1,79 @@
+Rotation Transform: #Rotates Theta degrees around z axis
+R(Theta in Z)=[[local-X][local-Y][local-Z]]
+R(Theta in Z)=[[Cos(Theta),Sin(Theta),0][-Sin(Theta),Cos(Theta),0][0,0,1]]
+
+For finding the Y direction, the Sin would take the place for the x direction, and because it is going left, sin(theta)
+would be negative.
+
+The Right handed version of the Matrix is a Transpose version of the matrix, meaning the rows of the left handed become
+the columns of a Right handed matrix.
+
+Will need the material and its color (kd) from the mtl file.
+
+in the obj files.
+
+V=point cordinate (vectorN point)
+VN= the normale (VectorN point)
+
+Different combinations:
+
+I: Just a face
+    f: 7 3 12 2     #The numbers are its position in the list meaning 7 would be [index 6]
+
+II: Face with normals
+    f: 7//4 3//2 12//2 2    #The the numbers after the // list the normals so the 2 would be the 2nd normal [index 1] in vn list
+
+III: Face with uv's
+    f: 7/19 3/20 12/7 2/3   #The numbers after the / list to a uv so the 19th would be [index 18] in the vt list
+
+IV: Face with uv&Normal
+    f: 7/19/4 3/20/2 12/7/2 2/3/5
+
+
+fp=open("__.obj","r")  #open the file you are wanting and the r is for read so your reading it in
+
+for line in fp:
+    line=line.strip()   #This removes any whitespace from the beg/end (ep'\n')
+    if line=="" or line[0]=="#":    #This passes any empty lines or comments
+        continue
+    elem=line.split("")     #This splits the numbers by their spaces such as into index spaces
+    if elem[0]=="f":
+        others==elem[1:]
+        if elem[1].count("/")==2:
+            sub_parts=elem[1].split("/")
+            find=int(sub_parts[0]-1
+            returns 2 if elem[1] is "50//26"    #All the f parts will be ints
+    elif elem[0]=="v":
+        x=float(elem[1])
+fp.close()
+
+For doing a Shear, you need to do almost a scaler for in the Y-axis, this shears the X-axis.
+
+Create a render function in the polymesh class called:
+def render(self, surf, Mat:
+    #transform all verts by self.mTransform
+    #loop through faces
+    use pygame.draw.polygon(surf,color,((X1,Y1),(X2,Y2),(X3,Y3),...),1)
+
+
+Left/Right handed differences:
+
+0:  Way you draw them
+
+1:Ways you write a vector (cal/matrix) & way you transform
+
+2:Transformations are transposed
+
+3:The order of the way of Matrix Concatenation
+
+4.Cross product result
+
+If you are concatenating n matrices
+    the cost of methodB (concatenation method)
+    converges to 1/n the cost of methodA (pipeline method)
+
+MethodB: n-1 matrix*matrix
+         p matrix*Vector
+
+MethodA: n*p Matrix*Vector's
+

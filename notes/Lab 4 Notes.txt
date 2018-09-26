@@ -1,0 +1,101 @@
+Thomas Gilman
+ETGG 1803
+15th February, 2016
+
+The Dot product function is set up in its own method not a hook method lik __mul__
+
+Two new VectorN methods:
+    def dot(self,rhs)
+        Type checking
+        return___
+
+    def cross(self,rhs):
+
+
+
+v=VectorN(4,3,-1)
+w=VectorN(0,2,5)
+print(v.dot(w)) #1.0
+
+T and U are two spheres
+t and u are the radii of the spheres
+*Determine: does T intersect U
+no square roots
+squares are ok but minimize them.
+
+E=U-T
+if ||E||<t+u:  #||E||^2<(t+u)^2=E*E<(t+u)^2
+    hit
+
+
+to find the center of the flock, add all the positions together and divide by two to get the avg center
+avg=VectorN(0,0)
+for b in boidList:
+    avg+=b.mPos
+avg/=len(self.boidList)
+
+
+for decay
+f(dist)=a*e^-k*dist
+
+k=0.04
+f is the magnitude of a
+
+1. find the direction towards the enemey.
+    Q=E-C #E and C are different points and Q would be the ray
+2. Is enemy too far away?
+    if ||Q||>n: #if Q.magnitude is less then length of shotgun blast(n).
+        dmg=0
+        stop
+3. Is enemy outside cone?
+    if angle made by Q&D>Theta:
+        dmg=0
+        stop
+
+    attempt 1:
+    |0=cos^-1(Q*D/||Q||):
+    if |0>Theta:
+        dmg=0
+        stop
+
+    attempt 2:
+    Q.normalized=Q/||Q||
+    Q.normalized*D.normalized is cos|0
+    if Q.normalized*D.normalized>cos(Theta)
+        dmg=0
+        stop
+4. Calculate dmg
+dmg=m-(||Q||/n)*m #this is the same as m*(1-||Q||/n)
+m=[3m/4,m/2,m/4]
+n=[n/4,n/2,3n/4]
+dist=||Q||
+
+
+
+Project vectorV onto vectorW to get two new Vectors:
+V||(parallel to w)
+V|_(perpendicular to w)
+such that vectorV=V||+V|_
+
+V||= ((v*w)/(w*w))*w
+V|_= V-V||
+
+
+
+Link problem with beamos
+
+D=[cos(),sin()]
+Q=L-B #L is link, B is beamos
+if Q*D<0:
+    stop #stops the program if the link is not in the beamos sight, so that the cpu process isnt wasted.
+Q||=((Q*D^)/(D^*D^))*D^
+Q|_=Q-Q||
+
+if || Q|_ ||<=n:
+    hit!
+
+
+or you could do if Q|_**2<=n**2:
+    hit!
+
+P=B+Q||

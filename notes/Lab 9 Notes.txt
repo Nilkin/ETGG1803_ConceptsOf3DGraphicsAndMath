@@ -1,0 +1,14 @@
+Most of the stuff that will be on the Exam will have a * before the title.
+Rasterization Pipeline:
+    To get the modified transformation
+    Vertex*TransforMatrix = ModifiedVertex
+    ModifiedVertex is a new space
+    The rasterizer is simply a transformation of these faces
+
+Major Spaces:
+    Model Space: as the model appears relative to blender/maya axes
+    Camera Space: objects are all relative to the rendering camera
+    Projection/ClipSpace:Perspective Projection +Homogeneous Divide
+        Orthogonal Projection
+        Isometric Projection
+    Screen Space: pixels(with depth)

@@ -1,0 +1,13 @@
+Ambient_Color=LightSource_Ambient.pairwise_mul(Object_Ambient)
+Diffuse_Color=LightSource_Diffuse.pairwise_mul(Object_Diffuse)
+Specular_Color=((sStr**Object_Shiney)*(LightSource_Specular.pairwise_mul(Object_Specular)))
+Color=(64,64,64)
+Light_Color+=Ambient_Color
+For o in Object_List:
+    For l in Light_Source:
+        if dStr>0:
+            Light_Color+=Diffuse_Color
+        if sStr>0:
+            Light_Color+=Specular_Color
+Color=LightColor.clamp()
+Color=(Color*255).int()

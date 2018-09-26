@@ -1,0 +1,45 @@
+Make a material class (Diffuse, Specular, Specular-power, ambient color)
+Make a light source class (Position, Diffuse and Specular color, and attenuation)
+We are given the Diffuse, Specular, colors and etc to pass into the material and light source class's
+
+The Lighting Equation: numlights-1
+Light_Color=Ambient_Color+E(Diffuse_Color[i]+Specular_Color[i])
+                         i=0
+x=0
+for i in range(5,10)
+x+=i**2+2
+
+How to Calculate the Ambient Color:
+Ambient_Color=A_L.pairwise_mul(A_M)
+A_L= the color vector of the (scene's) ambient light
+A_M= the color vector representing how much ambient light the material reflects
+
+How to Calculate the Diffuse Color:
+step1: Calculate the direction from hit point to light source(Normalize that)
+Smaller angles== brighter illumination
+Cos(angle) is closer to 1.0
+use Dot Product
+Light_direction=Light_position-Position
+Light_direction.normalized
+d_strength=Light_direction.normalized.dot(N_hat)  #N_hat is the up direction along the plane being hit
+Diffuse_Color=d_strength*(D_l.pairwise_mul(D_m))
+
+Need:
+L_p:The Light position
+P:The point we're illuminating
+N_hat:The Normal vector at the hit point
+D_l: The light's diffuse color
+D_m: The material's diffuse color
+
+How to Calculate the Specular Color:
+We need:
+Light_position
+Point: point were illuminating
+N: Normal vector at hit point
+S_l: The light's specular color
+S_m: The material's specular color
+hardness: Scalar indicating the specular focus
+C: camera's position
+
+To get a sharper specularStrength as a function of Theta, the angle made by V and R
+Square Cos(theta)
